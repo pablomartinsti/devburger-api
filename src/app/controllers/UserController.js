@@ -9,7 +9,7 @@ class UserController{
             id: v4(),
             name ,
             email ,
-            password_hast ,
+            password_hash ,
             admin,
            });
         
