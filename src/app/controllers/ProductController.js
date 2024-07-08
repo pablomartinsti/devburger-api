@@ -2,7 +2,7 @@ import * as Yup from 'yup'
 
 class ProductController{
 
-    async store(){
+    async store(request,response){
         const schema = Yup.object({
            name:Yup.string().required(),
            price:Yup.number().required(),
