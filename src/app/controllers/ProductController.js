@@ -22,7 +22,7 @@ class ProductController {
       return response.status(400).json({ error: 'File not provided' });
     }
 
-    const { filename: path } = request.file; 
+    const { filename:path } = request.file; 
 
     try {
       const product = await Product.create({
