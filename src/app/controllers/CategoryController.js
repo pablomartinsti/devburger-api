@@ -1,5 +1,6 @@
 import * as Yup from 'yup'
 import Category from '../models/Category.js';
+import User from '../models/User.js'
 
 
 class CategoryController {
@@ -14,6 +15,12 @@ class CategoryController {
             schema.validateSync(request.body, { abortEarly: false });
         } catch (err) {
             return response.status(400).json({ error: err.errors })
+        }
+
+        const { admin: isAdmin } = await User.findByPk(request.userId)
+
+        if (!isAdmin) {
+            return response.status(401).json()
         }
 
 
@@ -31,11 +38,11 @@ class CategoryController {
                 ({ error: 'category already exists' })
         }
 
-        const {id} = await Category.create({
+        const { id } = await Category.create({
             name,
 
         })
-        return response.status(201).json({id,name})
+        return response.status(201).json({ id, name })
     }
 
     async index(resquest, response) {
