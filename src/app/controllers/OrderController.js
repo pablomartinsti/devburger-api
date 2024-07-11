@@ -34,13 +34,13 @@ class OrderController {
             include: [
                 {
                     model: Category,
-                    as:'category',
+                    as: 'category',
                     attributes: ['name'],
                 }
             ]
         })
 
-        const formattedProducts = findProducts.map(product =>{
+        const formattedProducts = findProducts.map(product => {
 
             const productIndex = products.findIndex((item) => item.id === product.id)
             const newProduct = {
@@ -67,12 +67,44 @@ class OrderController {
 
         const createOrder = await Order.create(order)
 
-        
+
 
 
         return response.status(201).json(createOrder)
     }
 
+    async index(request, response) {
+        const orders = await Order.find()
+
+        return response.json(orders)
+    }
+
+    async update(request, response) {
+
+        const schema = Yup.object({
+            status: Yup.string().required()
+
+        })
+
+        try {
+            schema.validateSync(request.body, { abortEarly: false })
+        } catch (err) {
+            return response.status(400).json({ error: err.errors })
+        }
+
+        const { id } = request.params
+        const { status } = request.body
+
+        try {
+            await Order.updateOne({ _id: id }, { status })
+
+        } catch (err) {
+            return response.status(400).json({ error: err.message })
+        }
+
+
+        return response.json({ message: 'Status update sucessfully' })
+    }
 
 }
 
