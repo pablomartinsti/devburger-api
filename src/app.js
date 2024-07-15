@@ -2,24 +2,28 @@ import express from 'express'
 import routes from './routes.js'
 import path from 'path'
 import './database/index.js'
+import cors from 'cors'
 
 
 
-class App{
+class App {
 
-    constructor( ){
+    constructor() {
         this.app = express();
-
+        
+        this.app.use(cors())
         this.middlewares();
         this.routes();
     }
 
-    middlewares(){
+    middlewares() {
         this.app.use(express.json())
         this.app.use('/product-file', express.static(path.resolve('uploads')))
+
+        this.app.use('/category-file', express.static(path.resolve('uploads')))
     }
 
-    routes(){
+    routes() {
         this.app.use(routes);
     }
 }
