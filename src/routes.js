@@ -1,6 +1,6 @@
 import { Router } from "express"
 import multer from "multer";
-import {storage} from "./config/multer.js";
+import { storage } from "./config/multer.js";
 import UserController from "./app/controllers/UserController.js";
 import SessionController from "./app/controllers/SessionController.js";
 import ProductController from "./app/controllers/ProductController.js";
@@ -11,22 +11,22 @@ import authMiddleware from './app/middlewares/auth.js'
 
 const routes = new Router()
 
-const upload = multer({ storage: storage})
+const upload = multer({ storage: storage })
 
 
 routes.post('/users', UserController.store)
 routes.post('/session', SessionController.store)
 
 routes.use(authMiddleware)
-routes.post('/products',upload.single('file'), ProductController.store)
+routes.post('/products', upload.single('file'), ProductController.store)
 routes.get('/products', ProductController.index)
-routes.put('/products/:id',upload.single('file'), ProductController.update)
+routes.put('/products/:id', upload.single('file'), ProductController.update)
 
-routes.post('/categories',upload.single('file'),CategoryController.store)
+routes.post('/categories', upload.single('file'), CategoryController.store)
 routes.get('/categories', CategoryController.index)
-routes.put('/categories/:id',upload.single('file'), CategoryController.update)
+routes.put('/categories/:id', upload.single('file'), CategoryController.update)
 
-routes.post('/orders',OrderController.store)
+routes.post('/orders', OrderController.store)
 routes.get('/orders', OrderController.index)
 routes.put('/orders/:id', OrderController.update)
 

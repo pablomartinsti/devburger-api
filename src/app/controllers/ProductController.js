@@ -27,7 +27,7 @@ class ProductController {
         }
 
         const { filename: path } = request.file
-        const { name, price, category_id,offer } = request.body
+        const { name, price, category_id, offer } = request.body
 
         const product = await Product.create({
             name,
@@ -60,20 +60,20 @@ class ProductController {
             return response.status(401).json()
         }
 
-        const {id} = request.params
+        const { id } = request.params
 
         const findProduct = await Product.findByPk(id)
 
-        if(!findProduct){
-            return response.status(400).json({error:'make sure your product ID is correct'})
+        if (!findProduct) {
+            return response.status(400).json({ error: 'make sure your product ID is correct' })
         }
-        
+
         let path
-        if(request.file){
+        if (request.file) {
             path = request.file.filename
         }
 
-        const { name, price, category_id,offer } = request.body
+        const { name, price, category_id, offer } = request.body
 
         await Product.update({
             name,
@@ -82,23 +82,23 @@ class ProductController {
             path,
             offer,
 
-        },{
-            where:{
+        }, {
+            where: {
                 id
             }
         })
-        return response.status(20).json()
+        return response.status(200).json()
     }
 
     async index(resquest, response) {
         const products = await Product.findAll({
             include: [{
-                model:Category,
-                as:'category',
-                attributes:['id', 'name']
+                model: Category,
+                as: 'category',
+                attributes: ['id', 'name']
             }]
 
-            
+
         })
 
         return response.json(products)
