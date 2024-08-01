@@ -4,7 +4,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
 
-    await queryInterface.createTable('users', {
+    await queryInterface.createTable('Users', {
       id: {
         primaryKey: true,
         allowNull: false,
@@ -21,20 +21,20 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
-      password_hash:{
+      password_hash: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      admin:{
+      admin: {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
       },
-      created_at:{
+      createdAt: {
         type: Sequelize.DATE,
         allowNull: false,
 
       },
-      updated_at:{
+      updatedAt: {
         type: Sequelize.DATE,
         allowNull: false,
 
@@ -45,7 +45,7 @@ module.exports = {
 
   async down(queryInterface) {
 
-    await queryInterface.dropTable('users');
+    await queryInterface.dropTable('Users');
 
   }
 };
