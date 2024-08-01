@@ -1,6 +1,6 @@
 export default {
   dialect: 'postgres',
-  url: 'postgresql://postgres:HWKYJVDuWXUZNJTVmilzftZmZgJtCLKk@roundhouse.proxy.rlwy.net:43870/railway',
+  url: 'postgresql://postgres:plltFYeiQlKPsGnoSlgzVqojIIynTrSb@monorail.proxy.rlwy.net:17801/railway',
   define: {
     timestamps: true,
     underscored: true,
