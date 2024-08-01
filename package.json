@@ -4,7 +4,11 @@
   "description": "DevBurger API",
   "main": "src/server.js",
   "type": "module",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
+    "start": "node src/server.js",
     "dev": "nodemon"
   },
   "author": {
