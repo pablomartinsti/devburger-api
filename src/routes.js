@@ -13,6 +13,10 @@ const routes = new Router()
 
 const upload = multer({ storage: storage })
 
+routes.get('/', (req, res) => {
+    return res.json({ message: 'hello' })
+})
+
 
 routes.post('/users', UserController.store)
 routes.post('/session', SessionController.store)
