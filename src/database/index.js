@@ -16,13 +16,13 @@ class Database {
   }
 
   init() {
-    this.connection = new Sequelize('postgresql://dev_burger_c28i_user:YDtrTJ5U24ewtcruKYX0PpCqcQBbXxAP@dpg-cqmd4fhu0jms73fqnkng-a.oregon-postgres.render.com/dev_burger_c28i');
+    this.connection = new Sequelize('postgresql://postgres:bNLtVQytGFoLNYFlhzovQjgXoDFYeKRt@roundhouse.proxy.rlwy.net:11115/railway');
     models.map((model) => model.init(this.connection))
       .map(model => model.associate && model.associate(this.connection.models))
   }
 
   mongo() {
-    this.mongoConnection = mongoose.connect('mongodb://mongo:VBFIkEDhbSrkqlESZibCwUKmBrnEWdfZ@viaduct.proxy.rlwy.net:41932',)
+    this.mongoConnection = mongoose.connect('mongodb://localhost:27017/devburger',)
   }
 }
 
