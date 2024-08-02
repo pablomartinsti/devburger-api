@@ -11,7 +11,7 @@ class App {
     constructor() {
         this.app = express();
 
-        this.app.use(cors())
+        this.app.use(cors('https://code-burger-interface-kappa.vercel.app/'))
         this.middlewares();
         this.routes();
     }
