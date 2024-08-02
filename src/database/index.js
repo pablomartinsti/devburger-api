@@ -12,11 +12,11 @@ const models = [User, Product, Category]
 class Database {
   constructor() {
     this.init();
-    // this.mongo()
+    this.mongo()
   }
 
   init() {
-    this.connection = new Sequelize('postgresql://dev_burger_rp74_user:knKoxllw6CEOXXuQI4XfuYSlb7MX0WuG@dpg-cqm2fkrqf0us73a48eq0-a.oregon-postgres.render.com/dev_burger_rp74');
+    this.connection = new Sequelize(configDatabase);
     models.map((model) => model.init(this.connection))
       .map(model => model.associate && model.associate(this.connection.models))
   }
