@@ -1,6 +1,6 @@
 export default {
   dialect: 'postgres',
-  url: 'postgresql://dev_burger_rp74_user:knKoxllw6CEOXXuQI4XfuYSlb7MX0WuG@dpg-cqm2fkrqf0us73a48eq0-a.oregon-postgres.render.com/dev_burger_rp74',
+  url: 'postgresql://dev_burger_c28i_user:YDtrTJ5U24ewtcruKYX0PpCqcQBbXxAP@dpg-cqmd4fhu0jms73fqnkng-a.oregon-postgres.render.com/dev_burger_c28i',
   define: {
     timestamps: true,
     underscored: true,

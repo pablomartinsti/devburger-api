@@ -16,7 +16,7 @@ class Database {
   }
 
   init() {
-    this.connection = new Sequelize(configDatabase);
+    this.connection = new Sequelize('postgresql://dev_burger_c28i_user:YDtrTJ5U24ewtcruKYX0PpCqcQBbXxAP@dpg-cqmd4fhu0jms73fqnkng-a.oregon-postgres.render.com/dev_burger_c28i');
     models.map((model) => model.init(this.connection))
       .map(model => model.associate && model.associate(this.connection.models))
   }
