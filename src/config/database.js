@@ -1,6 +1,10 @@
 export default {
   dialect: 'postgres',
-  url: 'postgresql://postgres:bNLtVQytGFoLNYFlhzovQjgXoDFYeKRt@roundhouse.proxy.rlwy.net:11115/railway',
+  host: 'localhost',
+  port: 5432,
+  username: 'postgres',
+  password: 'postgres',
+  database: 'devburger',
   define: {
     timestamps: true,
     underscored: true,
